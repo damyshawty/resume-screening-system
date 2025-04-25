@@ -57,8 +57,8 @@ def extract_resume_info(text):
 
     # Extract matching skills from our list
     found_skills = []
-    words = set([token.text.strip() for token in doc if token.is_alpha])
-    for skill in skills_keywords:
+    words = set([token.text.strip().lower() for token in doc if token.is_alpha])
+    for skill in map(str.lower, skills_keywords):
         if skill in words:
             found_skills.append(skill)
 
